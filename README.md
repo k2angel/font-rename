@@ -2,7 +2,9 @@
 font-rename は、フォントファイル（.ttf, .otf）のファイル名を、フォント内部のPostScript名に一括リネームするためのコマンドラインツールです。
 
 ## installation
-
+```bash
+pip install git+https://github.com/k2angel/font-rename.git
+```
 
 ## usage
 ```bash
@@ -24,11 +26,13 @@ font-rename example1.ttf example2.ttf
 ```bash
 font-rename ./fonts
 ```
- - ディレクトリ内のサブディレクトリも再帰的に検索する
-```bash
-font-rename --recursive ./fonts
-```
  - 複数のパスを組み合わせて指定する
 ```bash
 font-rename example1.ttf example2.ttf ./fonts
 ```
+
+### options
+| オプション名          | 説明                            |
+|-----------------|:------------------------------|
+| -d, --dry-run   | 実際のリネームは行わず、変更されるファイル名を表示します。 |
+| -r, --recursive | ディレクトリ内のサブディレクトリも再帰的に探します。    |
