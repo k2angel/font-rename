@@ -13,7 +13,7 @@ def get_fonts(directory, recursive=False) -> list:
     return font_files
 
 
-def rename(font_file):
+def rename(font_file, dry_run=False):
     try:
         directory, filename = os.path.split(font_file)
         name, ext = os.path.splitext(filename)
@@ -24,8 +24,9 @@ def rename(font_file):
                 print(f"Error: Postscript name is not ASCII. {font_file}")
             if name != postscript_name:
                 print(f"Rename: {font_file} -> {postscript_name}{ext}")
-                os.rename(font_file, os.path.join(directory, postscript_name + ext))
+                if not dry_run:
+                    os.rename(font_file, os.path.join(directory, postscript_name + ext))
         else:
             print(f"Error: Not a TTF or OTF. {font_file}")
     except Exception as e:
-        print("Error: " + str(e))
+        print(f"Error: {e} {font_file}")
