@@ -22,6 +22,7 @@ def rename(font_file, dry_run=False):
             postscript_name = TTFont(font_file)["name"].getDebugName(6)  # type: ignore
             if not postscript_name.isascii():
                 print(f"Error: Postscript name is not ASCII. {font_file}")
+                return
             if name != postscript_name:
                 print(f"Rename: {font_file} -> {postscript_name}{ext}")
                 if not dry_run:
